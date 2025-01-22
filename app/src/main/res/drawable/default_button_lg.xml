@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 그림자 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#4A4743" />
+            <corners android:radius="25dp" />
+        </shape>
+    </item>
+
+    <!-- 버튼 배경 -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="@color/default_button_lg_gradient_left"
+                android:endColor="@color/default_button_lg_gradient_right"
+                android:angle="0"
+                />
+            <corners android:radius="25dp" />
+        </shape>
+    </item>
+
+</layer-list>

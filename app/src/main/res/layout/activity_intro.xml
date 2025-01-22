@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".IntroActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="70dp"
+            android:lineSpacingExtra="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_plex_sans_kr_semi_bold"
+            android:text="건강한\n채식의 시작"
+            android:textColor="#45423D"
+            android:textSize="45sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_plex_sans_kr_medium"
+            android:text="채식탁과 함께,\n새로운 식탁을 만들어나가요"
+            android:textColor="#45423D"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/intro_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.537"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_plex_sans_kr_regular"
+            android:layout_marginTop="51dp"
+            android:text="채식을 지향하는 모든이들을 위한"
+            android:textColor="#2D592A"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:lineSpacingExtra="0dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ibm_plex_sans_kr_bold"
+            android:text="맞춤형 AI 서비스"
+            android:textColor="#2D592A"
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints"
+            android:lineSpacingExtra="0dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp"
+            android:includeFontPadding="false"/>
+
+        <android.widget.Button
+            android:layout_marginTop="42dp"
+            android:id="@+id/start_button"
+            android:layout_width="334dp"
+            android:layout_height="55dp"
+            android:text="시작하기"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/white"
+            android:background="@drawable/default_button_lg"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
