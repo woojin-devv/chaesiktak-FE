@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".JoinActivity">
+
+    <!-- Root Vertical LinearLayout -->
+    <LinearLayout
+        android:id="@+id/verticalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Horizontal LinearLayout for Header -->
+
+        <!-- Divider Line -->
+        <LinearLayout
+            android:id="@+id/headerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="27dp"
+            android:paddingTop="55dp">
+
+            <!-- Back Arrow Icon -->
+            <ImageView
+                android:id="@+id/backArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="Back"
+                android:src="@drawable/backarrow_logo" />
+
+            <!-- Title Text -->
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/ibm_plex_sans_kr_bold"
+                android:gravity="center"
+                android:text="회원가입"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <!-- Home Icon -->
+            <ImageView
+                android:id="@+id/homeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Home"
+                android:src="@drawable/home_logo" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="#EDEDED" />
+
+        <!-- Form Section -->
+        <LinearLayout
+            android:id="@+id/emailFormSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="27dp">
+
+            <!-- Email ID Label -->
+            <TextView
+                android:id="@+id/emailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일 아이디"
+                android:textSize="16sp"
+                android:fontFamily="@font/ibm_plex_sans_kr_bold"
+                android:textColor="@color/black" />
+
+            <!-- Email Input Row -->
+            <LinearLayout
+                android:id="@+id/emailInputRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="12dp">
+
+                <!-- Email Input Field -->
+                <EditText
+                    android:id="@+id/textEmailInput"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_edit_text"
+                    android:hint="example@xxx.com"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- Duplicate Check Button -->
+                <android.widget.Button
+                    android:id="@+id/checkEmailButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/default_button_md"
+                    android:fontFamily="@font/inter"
+                    android:text="중복확인"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/emailError"
+                android:text="⚠ 에러메시지 처리"
+                android:textSize="12sp"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/error_message_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Password Form Section -->
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:id="@+id/passwordFormSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="27dp">
+
+            <!-- Password Label -->
+            <TextView
+                android:id="@+id/passwordLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호"
+                android:textSize="16sp"
+                android:fontFamily="@font/ibm_plex_sans_kr_bold"
+                android:textColor="@color/black" />
+
+            <!-- Password Input Row -->
+            <LinearLayout
+                android:id="@+id/passwordInputRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="12dp">
+
+                <!-- Password Input Field -->
+                <EditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/default_edit_text"
+                    android:hint="영문/숫자/특수문자 조합 9~20자"
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="16sp" />
+
+                <!-- Password Confirmation Input Field -->
+                <EditText
+                    android:id="@+id/confirmPasswordInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/default_edit_text"
+                    android:hint="비밀번호 확인"
+                    android:inputType="textPassword"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- name form section -->
+        <LinearLayout
+            android:id="@+id/nameFormSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:paddingHorizontal="27dp">
+
+            <!-- Email ID Label -->
+            <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:textSize="16sp"
+                android:fontFamily="@font/ibm_plex_sans_kr_bold"
+                android:textColor="@color/black" />
+
+            <!-- Email Input Row -->
+            <LinearLayout
+                android:id="@+id/nameInputRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="12dp">
+
+                <!-- Email Input Field -->
+                <EditText
+                    android:id="@+id/realnamelInput"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_edit_text"
+                    android:hint="이름 입력"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- nickname form section -->
+        <LinearLayout
+            android:id="@+id/nicknameFormSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="27dp">
+
+            <!-- Email ID Label -->
+            <TextView
+                android:id="@+id/nicknameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ibm_plex_sans_kr_bold"
+                android:text="닉네임"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <!-- Email Input Row -->
+            <LinearLayout
+                android:id="@+id/nicknameInputRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+
+                <!-- Email Input Field -->
+                <EditText
+                    android:id="@+id/nicknameInput"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/default_edit_text"
+                    android:hint="한글/영어/숫자 조합 2~8자"
+                    android:inputType="textEmailAddress"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- Duplicate Check Button -->
+                <android.widget.Button
+                    android:id="@+id/checkNicknameButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/default_button_md"
+                    android:fontFamily="@font/inter"
+                    android:text="중복확인"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/NicknameError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:text="⚠ 에러메시지 처리"
+                android:textColor="@color/error_message_red"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingHorizontal="27dp"
+            android:id="@+id/TOSrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="43dp"
+            android:paddingVertical="12dp">
+
+            <android.widget.CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/checkbox"
+                android:button="@android:color/transparent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp">
+
+                <TextView
+                    android:id="@+id/TOStext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:fontFamily="@font/ibm_plex_sans_kr_bold"
+                    android:paddingHorizontal="0dp"
+                    android:text="이용약관 및 개인정보 처리방침 동의(필수)"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="235dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="0dp"
+                    android:background="#B7B7B7" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <android.widget.Button
+            android:id="@+id/signUpbutton"
+            android:layout_width="309dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="57dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center"
+            android:text="가입하기"
+            android:textSize="25sp"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/white"
+            android:background="@drawable/default_button_lg"
+            />
+    </LinearLayout>
+</ScrollView>

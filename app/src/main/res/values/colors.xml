@@ -20,5 +20,6 @@
     <!-- etc, 기타-->
     <color name="tooltip_box">#F4F4F4</color>
     <color name="saved_item_heart_onclick">#FF1F73</color>
+    <color name="error_message_red">#FF0000</color>
 
 </resources>

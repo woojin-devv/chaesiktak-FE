@@ -1,6 +1,5 @@
 package com.example.chaesiktak
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,18 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class IntroActivity : AppCompatActivity() {
-    @SuppressLint("MissingSuperCall")
+class FindingPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        setContentView(R.layout.activity_finding_password)
 
-        setContentView(R.layout.activity_intro)
+        val findingPassword: Button = findViewById(R.id.finding_password_button)
 
-
-        val startButton: Button = findViewById(R.id.start_button)
-        startButton.setOnClickListener {
-            startActivity(Intent(this@IntroActivity, LoginActivity::class.java))
+        findingPassword.setOnClickListener {
+            val intent = Intent(this, FindingPasswordActivity2::class.java)
+            startActivity(intent)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -30,4 +28,3 @@ class IntroActivity : AppCompatActivity() {
         }
     }
 }
-

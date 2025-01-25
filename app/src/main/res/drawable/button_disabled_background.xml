@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 비활성화 상태 -->
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="#CCCCCC" /> <!-- 비활성화 시 배경색 -->
+            <corners android:radius="6dp" />
+            <alpha android:value="0.5" /> <!-- 비활성화 상태에 alpha 값 적용 -->
+        </shape>
+    </item>
+
+</selector>
