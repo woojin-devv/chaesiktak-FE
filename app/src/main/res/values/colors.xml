@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- General Colors, 스플래시 배경 색상 -->
+    <color name="splash_background_color">#60BE5B</color>
 
     <!-- General Colors -->
     <color name="black_replacement">#4A4743</color>
@@ -21,5 +23,6 @@
     <color name="tooltip_box">#F4F4F4</color>
     <color name="saved_item_heart_onclick">#FF1F73</color>
     <color name="error_message_red">#FF0000</color>
+    <color name="searching_bar_text_color">#F1F1F1</color>
 
 </resources>
