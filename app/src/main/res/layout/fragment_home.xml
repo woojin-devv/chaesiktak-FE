@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9"
+    tools:context=".fragments.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 검색 바 -->
+            <FrameLayout
+                android:id="@+id/home_search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/home_searching_bar"
+                android:foregroundGravity="center">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/searching_icon" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/abeezee_regular"
+                        android:text="검색어를 입력해주세요"
+                        android:textSize="16sp"
+                        android:textColor="@color/searching_bar_text_color" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- 둥근 모서리를 적용한 FrameLayout -->
+            <FrameLayout
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="26dp"
+                android:background="@drawable/rounded_background"
+                android:clipToOutline="true"
+                android:elevation="4dp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="41dp"
+                android:text="오늘의 추천 레시피"
+                android:fontFamily="@font/ibm_plex_sans_kr_medium"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    >
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/homeTap"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/home_onclicked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/scannerTap"
+            android:layout_weight="1"
+            android:src="@drawable/scanner_icon"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"/>
+
+        <ImageView
+            android:id="@+id/myinfoTap"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/myinfo_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
