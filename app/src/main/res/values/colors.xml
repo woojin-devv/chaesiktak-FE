@@ -24,5 +24,6 @@
     <color name="saved_item_heart_onclick">#FF1F73</color>
     <color name="error_message_red">#FF0000</color>
     <color name="searching_bar_text_color">#F1F1F1</color>
+    <color name="banner1_background">#58BB65</color>
 
 </resources>

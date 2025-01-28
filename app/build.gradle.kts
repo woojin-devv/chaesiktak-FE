@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    buildFeatures.viewBinding = true
     namespace = "com.example.chaesiktak"
     compileSdk = 35
 
