@@ -25,5 +25,7 @@
     <color name="error_message_red">#FF0000</color>
     <color name="searching_bar_text_color">#F1F1F1</color>
     <color name="banner1_background">#58BB65</color>
+    <color name="card_subtext">#C2C2C2</color>
+
 
 </resources>
