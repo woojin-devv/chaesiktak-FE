@@ -26,14 +26,14 @@
 #### 🔹 유틸리티 및 기능 관련 액티비티
 - **SplashActivity** - 앱 실행 시 처음 표시되는 스플래시 화면
 - **RecommendRecipe** - 데이터 클래스 정의
-  ```
+```kotlin
   package com.example.chaesiktak
-
-data class RecommendRecipe(
-    val image: Int,       // 이미지 리소스 ID
-    val title: String,    // 레시피 제목
-    val subtext: String   // 서브 텍스트 (0인분, 0시간)
-)```
+  
+  data class RecommendRecipe(
+      val image: Int,       // 이미지 리소스 ID
+      val title: String,    // 레시피 제목
+      val subtext: String   // 서브 텍스트 (0인분, 0시간)
+  )
   
 - **RecommendRecipeAdapter** - 추천 레시피 목록을 관리하는 RecyclerView 어댑터
 
