@@ -34,7 +34,8 @@
       val title: String,    // 레시피 제목
       val subtext: String   // 서브 텍스트 (0인분, 0시간)
   )
-  
+```
+ 
 - **RecommendRecipeAdapter** - 추천 레시피 목록을 관리하는 RecyclerView 어댑터
 
 ---
