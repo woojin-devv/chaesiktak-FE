@@ -1,6 +1,8 @@
 package com.example.chaesiktak.fragments
 import BannerAdapter
 import RecommendRecipeAdapter
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.Looper
 import androidx.fragment.app.Fragment
@@ -8,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -16,14 +19,16 @@ import com.example.chaesiktak.BannerData
 import com.example.chaesiktak.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chaesiktak.HomeActivity
 import com.example.chaesiktak.RecommendRecipe
+import com.example.chaesiktak.SearchPanel
 import com.example.chaesiktak.databinding.FragmentHomeBinding
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding // ✅ binding을 멤버 변수로 선언
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var recyclerView: RecyclerView
     private var recipeList: ArrayList<RecommendRecipe> = ArrayList()
     private lateinit var recommendrecipeAdapter: RecommendRecipeAdapter
@@ -34,9 +39,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false) // ✅ 초기화
-
-        // ViewPager 설정
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         viewPager = binding.banner
 
         // RecyclerView 설정
@@ -44,12 +47,23 @@ class HomeFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
+        //검색창 클릭 > 검색 패널
+        binding.homeSearchBar.setOnClickListener {
+            startActivity(Intent(requireContext(), SearchPanel::class.java))
+
+        }
+
         // RecyclerView 데이터 설정
         recipeList.apply {
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 1", "1인분, 15분"))
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 2", "2인분, 30분"))
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 3", "3인분, 45분"))
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 4", "4인분, 60분"))
+            add(RecommendRecipe(R.drawable.sample_image, "타이틀 5", "4인분, 60분"))
+            add(RecommendRecipe(R.drawable.sample_image, "타이틀 6", "4인분, 60분"))
+            add(RecommendRecipe(R.drawable.sample_image, "타이틀 7", "4인분, 60분"))
+            add(RecommendRecipe(R.drawable.sample_image, "타이틀 8", "4인분, 60분"))
+            add(RecommendRecipe(R.drawable.sample_image, "타이틀 9", "4인분, 60분"))
         }
         recommendrecipeAdapter = RecommendRecipeAdapter(recipeList)
         recyclerView.adapter = recommendrecipeAdapter
@@ -64,25 +78,25 @@ class HomeFragment : Fragment() {
         adapter = BannerAdapter(originalBanners)
         viewPager.adapter = adapter
 
-        // 🚀 초기에 중간 지점으로 이동 (무한 스크롤 효과)
+        // 초기에 중간 지점으로 이동 (무한 스크롤 효과)
         val startPosition = Int.MAX_VALUE / 2 - (Int.MAX_VALUE / 2) % originalBanners.size
         viewPager.setCurrentItem(startPosition, false)
 
-        // 🚀 Indicator 개수 설정 (원본 배너 개수 3개로 설정)
+        // Indicator 개수 설정 (원본 배너 개수 3개로 설정)
         binding.homeBannerIndicator.createIndicators(originalBanners.size, 0)
 
-        // 🚀 Indicator & 무한 스크롤 동기화
+        // Indicator & 무한 스크롤 동기화
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
 
-                // 🚀 실제 배너 개수에 맞춰서 위치 조정
+                // 실제 배너 개수에 맞춰서 위치 조정
                 val realPosition = position % originalBanners.size
                 binding.homeBannerIndicator.animatePageSelected(realPosition)
             }
         })
 
-        // 🚀 자동 스크롤 시작
+        // 자동 스크롤 시작
         startAutoScroll(binding, originalBanners.size)
 
         // 하단 탭 네비게이션 설정
@@ -114,7 +128,7 @@ class HomeFragment : Fragment() {
                     val nextPage = viewPager.currentItem + 1
                     viewPager.setCurrentItem(nextPage, true)
 
-                    // 🚀 Indicator도 함께 업데이트
+                    // Indicator도 함께 업데이트
                     val realPosition = nextPage % bannerSize
                     binding.homeBannerIndicator.animatePageSelected(realPosition)
                 }

@@ -102,6 +102,14 @@
                 android:overScrollMode="never"
                 android:clipToPadding="false"
                 />
+            <TextView
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="41dp"
+                android:text="오늘의 추천 식탁"
+                android:fontFamily="@font/ibm_plex_sans_kr_medium"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
