@@ -1,5 +1,4 @@
 package com.example.chaesiktak.fragments
-
 import BannerAdapter
 import RecommendRecipeAdapter
 import android.os.Bundle
@@ -18,33 +17,31 @@ import com.example.chaesiktak.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chaesiktak.RecommendRecipe
+import com.example.chaesiktak.databinding.FragmentHomeBinding
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding // ✅ binding을 멤버 변수로 선언
     private lateinit var recyclerView: RecyclerView
     private var recipeList: ArrayList<RecommendRecipe> = ArrayList()
     private lateinit var recommendrecipeAdapter: RecommendRecipeAdapter
     private lateinit var viewPager: ViewPager2
     private lateinit var adapter: BannerAdapter
-    private lateinit var infiniteBanners: List<BannerData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false) // ✅ 초기화
 
         // ViewPager 설정
-        viewPager = view.findViewById(R.id.banner)
+        viewPager = binding.banner
 
         // RecyclerView 설정
-        recyclerView = view.findViewById(R.id.recipeRecyclerView)
+        recyclerView = binding.recipeRecyclerView
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
-        // RecyclerView를 가로 방향으로 설정
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         // RecyclerView 데이터 설정
@@ -54,7 +51,6 @@ class HomeFragment : Fragment() {
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 3", "3인분, 45분"))
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 4", "4인분, 60분"))
         }
-
         recommendrecipeAdapter = RecommendRecipeAdapter(recipeList)
         recyclerView.adapter = recommendrecipeAdapter
 
@@ -65,34 +61,39 @@ class HomeFragment : Fragment() {
             BannerData("환경을 생각하는 선택!", "채식의 시작은 여기서.", R.drawable.banner_icon)
         )
 
-        infiniteBanners = listOf(originalBanners.last()) + originalBanners + listOf(originalBanners.first())
-        adapter = BannerAdapter(infiniteBanners)
+        adapter = BannerAdapter(originalBanners)
         viewPager.adapter = adapter
 
-        // 배너 이벤트 처리
+        // 🚀 초기에 중간 지점으로 이동 (무한 스크롤 효과)
+        val startPosition = Int.MAX_VALUE / 2 - (Int.MAX_VALUE / 2) % originalBanners.size
+        viewPager.setCurrentItem(startPosition, false)
+
+        // 🚀 Indicator 개수 설정 (원본 배너 개수 3개로 설정)
+        binding.homeBannerIndicator.createIndicators(originalBanners.size, 0)
+
+        // 🚀 Indicator & 무한 스크롤 동기화
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                if (position == 0) {
-                    viewPager.post { viewPager.setCurrentItem(infiniteBanners.size - 2, false) }
-                } else if (position == infiniteBanners.size - 1) {
-                    viewPager.post { viewPager.setCurrentItem(1, false) }
-                }
+
+                // 🚀 실제 배너 개수에 맞춰서 위치 조정
+                val realPosition = position % originalBanners.size
+                binding.homeBannerIndicator.animatePageSelected(realPosition)
             }
         })
 
-        // 자동 스크롤 시작
-        startAutoScroll()
+        // 🚀 자동 스크롤 시작
+        startAutoScroll(binding, originalBanners.size)
 
         // 하단 탭 네비게이션 설정
-        view.findViewById<ImageView>(R.id.scannerTap).setOnClickListener {
-            view.findNavController().navigate(R.id.action_homeFragment_to_scannerFragment)
+        binding.scannerTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_scannerFragment)
         }
-        view.findViewById<ImageView>(R.id.myinfoTap).setOnClickListener {
-            view.findNavController().navigate(R.id.action_homeFragment_to_myInfoFragment)
+        binding.myinfoTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_myInfoFragment)
         }
 
-        return view
+        return binding.root
     }
 
     override fun onPause() {
@@ -102,16 +103,20 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        startAutoScroll()
+        startAutoScroll(binding, 3) // ✅ binding 정상 참조 가능
     }
 
-    private fun startAutoScroll() {
+    private fun startAutoScroll(binding: FragmentHomeBinding, bannerSize: Int) {
         viewLifecycleOwner.lifecycleScope.launch {
             while (viewLifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
                 delay(2500)
                 if (::viewPager.isInitialized) {
-                    val nextPage = (viewPager.currentItem + 1) % infiniteBanners.size
+                    val nextPage = viewPager.currentItem + 1
                     viewPager.setCurrentItem(nextPage, true)
+
+                    // 🚀 Indicator도 함께 업데이트
+                    val realPosition = nextPage % bannerSize
+                    binding.homeBannerIndicator.animatePageSelected(realPosition)
                 }
             }
         }
@@ -121,3 +126,5 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.coroutineContext.cancelChildren()
     }
 }
+
+

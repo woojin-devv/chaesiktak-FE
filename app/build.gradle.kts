@@ -1,3 +1,5 @@
+import com.android.tools.r8.internal.me
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -34,12 +36,19 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true  // View Binding 활성화
+    }
 }
 
 dependencies {
     //ViewPager2
     implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
+
+    //indicator library
+    implementation("me.relex:circleindicator:2.1.6")
+
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
