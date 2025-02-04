@@ -23,6 +23,7 @@ import com.example.chaesiktak.HomeActivity
 import com.example.chaesiktak.RecommendRecipe
 import com.example.chaesiktak.SearchPanel
 import com.example.chaesiktak.databinding.FragmentHomeBinding
+import com.example.chaesiktak.databinding.HomeRecipeCardBinding
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -40,18 +41,17 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        viewPager = binding.banner
+
+        // 검색창 클릭 > 검색 패널
+        binding.homeSearchBar.setOnClickListener {
+            startActivity(Intent(requireContext(), SearchPanel::class.java))
+        }
 
         // RecyclerView 설정
         recyclerView = binding.recipeRecyclerView
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        //검색창 클릭 > 검색 패널
-        binding.homeSearchBar.setOnClickListener {
-            startActivity(Intent(requireContext(), SearchPanel::class.java))
-
-        }
 
         // RecyclerView 데이터 설정
         recipeList.apply {
@@ -65,6 +65,7 @@ class HomeFragment : Fragment() {
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 8", "4인분, 60분"))
             add(RecommendRecipe(R.drawable.sample_image, "타이틀 9", "4인분, 60분"))
         }
+
         recommendrecipeAdapter = RecommendRecipeAdapter(recipeList)
         recyclerView.adapter = recommendrecipeAdapter
 
@@ -76,6 +77,7 @@ class HomeFragment : Fragment() {
         )
 
         adapter = BannerAdapter(originalBanners)
+        viewPager = binding.banner
         viewPager.adapter = adapter
 
         // 초기에 중간 지점으로 이동 (무한 스크롤 효과)
@@ -110,16 +112,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onPause() {
-        super.onPause()
-        stopAutoScroll()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        startAutoScroll(binding, 3) // ✅ binding 정상 참조 가능
-    }
-
     private fun startAutoScroll(binding: FragmentHomeBinding, bannerSize: Int) {
         viewLifecycleOwner.lifecycleScope.launch {
             while (viewLifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
@@ -140,5 +132,6 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.coroutineContext.cancelChildren()
     }
 }
+
 
 
