@@ -39,6 +39,9 @@
 - **RecommendRecipeAdapter** - 추천 레시피 목록을 관리하는 RecyclerView 어댑터
 
 ---
+### 📁 Activities
+https://github.com/ongakuer/CircleIndicator?tab=readme-ov-file //indicator library 
+---
 
 ## 🏗 아키텍처 및 설계
 
