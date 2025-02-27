@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".LoginActivity">
+
+    <!-- 로고 및 제목 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="229dp"
+        android:text="채식탁"
+        android:textSize="24sp"
+        android:fontFamily="@font/ibm_plex_sans_kr_semi_bold"
+        android:textColor="#2D592A" />
+
+    <!-- 입력 필드, 아이디 입력 -->
+    <android.widget.EditText
+        android:id="@+id/username_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="22dp"
+        android:hint="아이디를 입력하세요"
+        android:background="@drawable/default_edit_text"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:inputType="text" />
+
+    <!-- 입력 필드, 비밀번호 입력 -->
+    <android.widget.EditText
+        android:id="@+id/password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="8dp"
+        android:hint="비밀번호를 입력하세요"
+        android:background="@drawable/default_edit_text"
+        android:padding="12dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:inputType="text" />
+
+    <!-- 로그인 버튼 -->
+    <android.widget.Button
+        android:layout_marginTop="42dp"
+        android:id="@+id/start_button"
+        android:layout_width="334dp"
+        android:layout_height="55dp"
+        android:text="로그인"
+        android:textSize="25sp"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/white"
+        android:background="@drawable/default_button_lg"
+        android:layout_gravity="center" />
+
+    <!-- 비밀번호 찾기 -->
+    <TextView
+        android:layout_marginStart="50dp"
+        android:id="@+id/forgot_password_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="비밀번호를 잊으셨나요? 비밀번호 찾기"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <!-- 회원가입 -->
+    <TextView
+        android:id="@+id/sign_up_text"
+        android:layout_marginStart="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="아직 회원가입 이전이신가요? 회원가입"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+</LinearLayout>

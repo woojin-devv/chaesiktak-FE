@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- General Colors -->
+    <color name="black_replacement">#4A4743</color>
+
+    <!-- Default Buttons, 기본 버튼 -->
+    <color name="default_button_lg_gradient_left">#80CC53</color>
+    <color name="default_button_lg_gradient_right">#5DBD5B</color>
+    <color name="default_button_md">#58BB65</color>
+    <color name="default_button_sm">#60BE5B</color>
+    <color name="default_button_onclick">#73605C</color>
+
+    <!-- Cancel Buttons, 취소 버튼-->
+    <color name="cancel_button_gradient_left">#CCCCCC</color>
+    <color name="cancel_button_gradient_right">#A4A4A4</color>
+
+    <!-- etc, 기타-->
+    <color name="tooltip_box">#F4F4F4</color>
+    <color name="saved_item_heart_onclick">#FF1F73</color>
+
+</resources>
