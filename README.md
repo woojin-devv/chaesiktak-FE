@@ -34,5 +34,6 @@
 ## Team
 |최우진|나향지|
 |:---:|:---:|
-|<a href="https://github.com/woojin-devv"><img src="https://avatars.githubusercontent.com/woojin-devv" width="250"></a>|<a href="https://github.com/hyonjji"><img src="https://avatars.githubusercontent.com/hyonjji" width="250"></a>|
+|<a href="https://github.com/woojin-devv"><img src="https://avatars.githubusercontent.com/woojin-devv" width="200"></a>|<a href="https://github.com/hyonjji"><img src="https://avatars.githubusercontent.com/hyonjji" width="200"></a>|
 |Android|Android|
+
